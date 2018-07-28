@@ -194,7 +194,7 @@ module.exports = function(RED) {
             if (!Array.isArray(msg.payload)) {
                 throw Error('Payload is not Array');
             }
-            if(client.status === 'ready') {
+            if (client.status === 'ready') {
               client[node.command](msg.payload, function(err, res) {
                 if (err) {
                     node.error(err, msg);
@@ -204,11 +204,12 @@ module.exports = function(RED) {
                     node.send(msg);
                 }
             });
-			} else {
-			  msg.payload = null;
-			  msg.redis = 'offline';
-			  node.send(msg);
-			}
+	    }
+	    else {
+	        msg.payload = null;
+	        msg.redis = 'offline';
+	        node.send(msg);
+	    }
 			
         });
 
